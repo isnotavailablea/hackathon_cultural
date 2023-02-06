@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home_page.css";
 function Home_page() {
+  // const [isShown,setIsShown]=useState(false);
   const arr = [
     "Assam",
     "arunachalpradesh",
@@ -24,7 +25,7 @@ function Home_page() {
     "rajasthan",
     "TamilNadu",
     "Telangana",
-    "UttarPradesh","Karnataka"
+    "UttarPradesh"
   ];
   return (
     <>
@@ -33,9 +34,18 @@ function Home_page() {
       </div>
       <div className="allstates">
         {arr.map(function (name, index) {
+          let the_path=`./States/${name}.jpg`;
+          // thestring+=`./States/${name}.jpg`;
           return (
-            <div key={index}>
-              <img src={require(`./States/${name}.jpg`)} />
+            
+            <div key={index} style={
+              { backgroundImage: `url(${process.env.PUBLIC_URL+ the_path}` } 
+             } 
+            >
+              <div>
+                <p>{name}</p>
+              </div>
+              {/* <img src={require(`./States/${name}.jpg`)} /> */}
             </div>
           );
         })}

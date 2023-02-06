@@ -1,15 +1,26 @@
-import React from 'react';
+import React, {useContext } from 'react';
 import './App.css';
 import Home_page from './Home_page';
 import Navbar from './Navbar';
-
+import Alertbox from './Alertbox';
+import { AllContexts } from './Prime'
+import Footer from "./Footer"
+import Helpbtn from './Helpbtn';
+import Loginpage from './Loginpage';
 function App() {
+  const obj=useContext(AllContexts);
+
   return (
     <>
-     <Navbar login={false}/>
-     <Home_page/>
+     {!obj.loginpg.show && <Navbar login={false}/>}
+     <Helpbtn/>
+     {obj.loginpg.show && <Loginpage/>}
+     {obj.alerta.show && <Alertbox/>}
+      {obj.homepage.show && <Home_page/>}
+      {!obj.loginpg.show && <Footer/>}
      </>
   );
 }
 
-export default App;
+export default App
+

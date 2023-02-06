@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import './Navbar.css';
+import { AllContexts } from './Prime';
 function Navbar(props) {
-
+    const obj=useContext(AllContexts);
   return (
     <>
-        <div className="container">
+        <div className="nav-container">
             <div className="tools">
-                <button>Login</button>
+                <button onClick={obj.useloginpg}>Login</button>
             </div>
             <div className="logo">
                 <img src={require("./haritage.png")} alt="logo not found" />
