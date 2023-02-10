@@ -1,52 +1,26 @@
-import React,{useState,createContext} from 'react'
+import React,{useState,createContext, useEffect} from 'react'
 import App from "./App.js"
 export const AllContexts=createContext();
 function Prime(props) {
-    const [alerta,setAlerta]=useState({
-        show:true,
-        msg:"okay"
-      });
       const [homepage,setHomepage]=useState({
         show:true
       })
-    const [logalrt,setLogalert]=useState(
-      {
-        show:false,
-        msg:"don't know"
-      }
-    )
     const [loginpg,setLoginpg]=useState({
         show:false
     })
+    
     const [loggedin,setLoggedin]=useState({
         loggedin:false,
-        user:{
-          name:"John Doe",
-          keywrd:"1234"
-        }
+        id:"134"
     })
-      const logit=(emal,pass)=>{
-         if(props.checkusname(emal,pass)){
-            setLoggedin({loggedin:true,
-              user:{
-                name:emal,
-                keywrd:props.getkeywrd(emal,pass)
-              }
-            })
-         }
-         else{
-            setLogalert({
-              show:true,
-              msg:"Invalid username or id"
-            })
-         }
+      const logout=()=>{
+        setLoggedin({
+          loggedin:false,
+          id:"124"
+        })
       }
-      const updatealrt=()=>{
-        // console.log("was used");
-        setAlerta({
-          show:false,
-          msg:"not okay"
-        });
+      const loguser=(id)=>{
+        setLoggedin({loggedin:true,id:id});
       }
       const useloginpg=()=>{
         if(loginpg.show){
@@ -64,12 +38,12 @@ function Prime(props) {
           setHomepage({show:false});
         }
         else{
-          // setLoginpg({show:true});
+          setLoginpg({show:false});
           setHomepage({show:true});
         }
       }
   return (
-    <AllContexts.Provider value={{alerta,updatealrt,logalrt,logit,loggedin,loginpg,useloginpg,homepage,usehomepg}}>
+    <AllContexts.Provider value={{loggedin,loginpg,useloginpg,loguser,logout,homepage,usehomepg}}>
         <App/>
         </AllContexts.Provider>
   )

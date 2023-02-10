@@ -7,7 +7,8 @@ function Navbar(props) {
     <>
         <div className="nav-container">
             <div className="tools">
-                <button onClick={obj.useloginpg}>Login</button>
+                {!obj.loggedin.loggedin &&<button onClick={obj.useloginpg}>Login</button>}
+                {obj.loggedin.loggedin && <button onClick={obj.logout}>Logout</button>}
             </div>
             <div className="logo">
                 <img src={require("./haritage.png")} alt="logo not found" />
